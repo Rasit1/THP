@@ -1,0 +1,33 @@
+<% if @gossips.length == 0 %>
+  <p><em>(no gossip to display)</em></p>
+<% else %>
+  <% @gossips.each_with_index do |gossip, index| %>
+    <div>
+      <strong>Gossip n°<%= index %></strong><br />
+      (created on <%= gossip.creation_datetime.strftime("%d %b %Y") %> by
+      <% if user_signed_in? %>
+        <%= gossip.creator.username %>
+      <% else %>
+        <em title="sign in to see">hidden</em>
+      <% end %>
+      )<br />
+      --->
+      <% if user_signed_in? %>
+        <%= gossip.content %>
+        <br />
+        <%= link_to "edit", edit_gossip_path(gossip), class: "badge badge-info" %> <%= link_to "delete", gossip_path(gossip), method: :delete, class: "badge badge-danger", data: { confirm: "T'es sûr de toi ?" } %>
+      <% else %>
+        <em title="sign in to see">hidden</em>
+      <% end %>
+    </div>
+    <p>------------------------------------</p>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= button_to "add new", new_gossip_path, method: :get, class:'btn btn-default' %>
+<% else %>
+  first <%= link_to "sign in here", new_user_session_path, class: "badge badge-info" %>
+  or <%= link_to "here (facebook)", user_facebook_omniauth_authorize_path, class: "badge badge-info" %> to gossip
+  
+<% end %>

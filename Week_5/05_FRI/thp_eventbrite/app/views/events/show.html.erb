@@ -1,0 +1,21 @@
+
+<h1>Event <%= @event.desc %></h1>
+<p>
+  Place: <%= @event.place %><br />
+  Date: <%= @event.date %><br />
+  Created by: <%= link_to @event.creator.name, user_path(@event.creator.id) %>
+</p>
+
+<h4>Participants</h4>
+<ul class="list-group">
+<% @event.attendees.each do |user| %>
+  <li class="list-group-item">
+    <%= "##{user.id} - #{user.name}" %>
+    <%= link_to '(see more)', user_path(user.id) %>
+    </li>
+<% end %>
+</ul>
+
+<p>
+<%= button_to 'back', users_path, method: :get, class:'btn btn-default' %>
+</p>

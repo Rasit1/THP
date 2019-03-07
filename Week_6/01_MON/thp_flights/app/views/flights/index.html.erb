@@ -1,0 +1,42 @@
+<h1>Flights#index</h1>
+
+<%= form_tag root_path, method: :get do %>
+  <p>From: <%= collection_select(:airport, :departure_airport_id, @airports, :id, :airport_code, prompt: true) %>
+  <p>To: <%= collection_select(:airport, :arrival_airport_id, @airports, :id, :airport_code, prompt: true) %></p>
+  <p>Date: <%= date_field_tag 'departure_date' %></p>
+  <p><%= submit_tag 'Search' %></p>
+<% end %>
+
+<% if @flights %>
+<p>List of flights <%= "from " + @departure_airport_code + " " if @departure_airport_code %><%= "to " + @arrival_airport_code if @arrival_airport_code %></p>
+<table>
+  <thead>
+    <tr>
+      <th>departure</th>
+      <th>from</th>
+      <th>to</th>
+      <th>duration</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @flights.each do |flight| %>
+    <tr>
+      <td>
+        <%= flight.departure_date.to_formatted_s(:short) %>
+      </td>
+      <td>
+        <%= flight.departure_airport.airport_code %>
+      </td>
+      <td>
+        <%= flight.arrival_airport.airport_code %>
+      </td>
+      <td>
+        <%= "#{flight.duration} min" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>Make a search (with at least an origin or a destination) to display flights!</p>
+<% end %>

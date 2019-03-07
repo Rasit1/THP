@@ -1,0 +1,10 @@
+<h1>Modérer ce gossip</h1>
+
+<%= form_tag("/gossips/#{@gossip.id}", method: :patch) do %>
+  <p>Who are you? <%= text_field_tag 'gossip[author]', @gossip.author %></p>
+  <p>What do you want to gossip? <%= text_area_tag 'gossip[content]', @gossip.content %></p>
+  <p><%= submit_tag 'Gossip!' %></p>
+<% end %>
+
+<%= link_to 'Abort abort abort', gossip_path %><br />
+<%= link_to 'Hello Gossips!', root_path %>

@@ -1,0 +1,8 @@
+<h2>TwitterBot de l'année.</h2>
+
+<%= form_for :params_tweet do |f| %>
+  <%= f.text_field :content, placeholder:"put your tweet here" %>
+  <%= f.submit value:"tweet!" %>
+<% end %>
+<br/>
+<%= link_to "check twitter", "https://twitter.com/mange_pas_cher"%>

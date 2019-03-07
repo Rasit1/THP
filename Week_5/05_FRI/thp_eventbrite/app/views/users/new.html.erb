@@ -1,0 +1,16 @@
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "name", class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.password_field :password, placeholder: "password", class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.password_field :password_confirmation, placeholder: "password confirmation", class:'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'new', class:'btn btn-default' %>
+  </div>
+<% end %>
+
+<%= button_to 'back', users_path, method: :get, class:'btn btn-default' %>

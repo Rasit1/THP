@@ -1,0 +1,45 @@
+// Place all the styles related to the Emails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    width: 100%;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: rgb(21, 60, 108);
+}
+
+table {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #af0606;
+    color: white;
+}
+
+#content {
+    width: 500px;
+    height: 300px;
+    border: solid 1px black;
+    margin-left: 20px;
+}
+
+.read_0 {
+    background-color: #ffbfbf;
+}
+
+.read_1 {
+    background-color: #defffd;
+}

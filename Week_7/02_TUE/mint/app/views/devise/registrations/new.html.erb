@@ -1,0 +1,62 @@
+<%= stylesheet_link_tag 'custom' %>
+
+<header>
+  <div>
+    <p class="smaller">Already have an Intuit account?</p>
+    <p class="smaller"><a href="/">I forgot my User ID or Password</a></p>
+  </div>
+  <button><span>Sign In</span></button>
+</header>
+
+<section>
+  <a href="/" ><%= image_tag 'logo_intuit_grey.png', id: 'logo_top' %></a>
+  <div id="sign_up">
+    <div id="links">
+      <a href="/" ><%= image_tag 'logo_turbotax.png', id: 'logo_turbotax' %></a>
+      <a href="/" ><%= image_tag 'logo_quickbooks.png', id: 'logo_quickbooks' %></a>
+      <a href="/" ><%= image_tag 'logo_mint.png', id: 'logo_mint' %></a>
+    </div>
+    <h1>One Account.</h1>
+    <h1>Everything Intuit.</h1>
+    <p class="smaller">Create an account for all of Intuit's products including Mint. <a href="/">Learn more</a></p>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label 'Email address' %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.button "<span>Create Account</span>".html_safe %>
+      </div>
+    <% end %>
+
+    <p id="bottom_signup" class="smaller"><em>By clicking Create Account, you agree to our <a href="/">License Agreement</a> and <a href="/">Privacy Statement</a>.</em></p>
+  </div>
+</section>
+
+<footer>
+  <%= image_tag 'logo_intuit_grey.png', id: 'logo_bottom' %>
+  <ul>
+    <li><a href="/">Legal</a></li>
+    <li><a href="/">Privacy</a></li>
+    <li><a href="/">Security</a></li>
+  </ul>
+  <p>© 2017 Intuit, Inc. All rights reserved. Intuit, QuickBooks, QB, TurboTax, ProConnect and Mint are registered trademarks of Intuit Inc.</p>
+  <p>Terms and conditions, features, support, pricing, and service options subject to change without notice.</p>
+</footer>
